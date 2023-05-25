@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { HomeCaixa0, HomeCaixa1, HomeCaixa2 } from "./homeStyled";
 
 export function Home({ Listadeproduto }) {
-  console.log(Listadeproduto);
+  const [ordination, setOrdination] = useState("");
+
+  function hSelect(event) {
+    setOrdination(event.target.value);
+  }
+  console.log(ordination);
+
   return (
     <>
       <HomeCaixa0>
@@ -10,7 +17,8 @@ export function Home({ Listadeproduto }) {
           <span>Quantidade de produtos:{Listadeproduto.length}</span>
           <span>
             Ordenação:
-            <select>
+            <select value={ordination} onChange={hSelect}>
+              <option> </option>
               <option>Crecente </option>
               <option>Decrecente</option>
             </select>
