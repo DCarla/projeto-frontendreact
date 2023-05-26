@@ -1,13 +1,18 @@
-import { CardCaixa } from "./ProductCardStyle";
+import { CardCaixa, CardTextCaixa } from "./ProductCardStyle";
 
-export function ProductCard() {
+export function ProductCard({ Listadeproduto, addCarrinho }) {
+  // console.log(Listadeproduto);
   return (
     <>
       <CardCaixa>
-        <p>Product Card</p>
-        <p>Nome do produto</p>
-        <p>Valor do produto</p>
-        <button>Adicionar item</button>
+        <img src={Listadeproduto.imageUrl} />
+        <CardTextCaixa>
+          <p>{Listadeproduto.name}</p>
+          <p>{Listadeproduto.value}</p>
+          <button onClick={() => addCarrinho(Listadeproduto)}>
+            Adicionar item
+          </button>
+        </CardTextCaixa>
       </CardCaixa>
     </>
   );

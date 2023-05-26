@@ -15,6 +15,30 @@ export function Home({
     setOrdination(event.target.value);
   }
 
+  function addCart(produto) {
+    const novoProduto = carrinho.find(
+      (produtoCallBack) => produto.id === produtoCallBack.id
+    );
+    if (novoProduto === undefined) {
+      produto = { ...produto, quantidade: 1 };
+      setCarrinho([...carrinho, produto]);
+
+      const vTotal = valorTotal + produto.value;
+      setValorTotal(vTotal);
+    } else {
+      const novoCarrinho = carrinho.map((produto) => {
+        if (produto.id === novoProduto.id) {
+          const vTotal1 = valorTotal + produto.value;
+          setValorTotal(vTotal1);
+          return { ...novoProduto, quantidade: produto.quantidade + 1 };
+        } else {
+          return produto;
+        }
+      });
+      setCarrinho(novoCarrinho);
+    }
+  }
+  console.log("valor total", valorTotal);
   return (
     <>
       <HomeCaixa0>
@@ -31,9 +55,15 @@ export function Home({
         </HomeCaixa1>
 
         <HomeCaixa2>
-          <ProductCard Listadeproduto={Listadeproduto[0]} />
-          <ProductCard Listadeproduto={Listadeproduto[1]} />
-          <ProductCard Listadeproduto={Listadeproduto[2]} />
+          {Listadeproduto.map((produto) => {
+            return (
+              <ProductCard
+                Listadeproduto={produto}
+                key={produto.id}
+                addCarrinho={addCart}
+              />
+            );
+          })}
         </HomeCaixa2>
       </HomeCaixa0>
     </>

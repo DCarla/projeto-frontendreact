@@ -5,14 +5,15 @@ export const CardCaixa = styled.div`
   height: 30vh;
   display: flex;
   flex-direction: column;
+
   img {
     width: 100%;
-    height: 70%;
+    height: 80%;
   }
 `;
 
 export const CardTextCaixa = styled.div`
-  height: 30%;
+  height: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

@@ -1,3 +1,10 @@
-export function Items() {
-  return <p>Items</p>;
+export function Items({ nome, valor, quantidade, imagem, id, removeItem }) {
+  return (
+    <>
+      <p>Nome:{nome}</p>
+      <p>Valor:{valor}</p>
+      <p>Quantidade:{quantidade}</p>
+      <button onClick={() => removeItem(id)}>Remover</button>
+    </>
+  );
 }
