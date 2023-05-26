@@ -4,17 +4,41 @@ import { Home } from "./Components/ProductList/Home/Home";
 import { Cart } from "./Components/ShoppingCart/Cart/Cart";
 import GlobalStyle from "./GlobalStyle";
 import { productList } from "./assents/productList";
+import { useState } from "react";
 
 function App() {
-  console.log(productList);
-
+  const [cart, setCart] = useState("");
+  const [amount, setAmount] = useState("");
+  const [minfilter, setMinFilter] = useState("0");
+  const [maxfilter, setMaxFilter] = useState("0");
+  const [searchfilter, setSearchFilter] = useState("");
   return (
     <>
       <GlobalStyle />
       <AppBox>
-        <Filters />
-        <Home Listadeproduto={productList} />
-        <Cart />
+        <Filters
+          filtroMinimo={minfilter}
+          filtroMaximo={maxfilter}
+          localizaFiltro={searchfilter}
+          setFiltroMaximo={setMaxFilter}
+          setFiltroMinimo={setMinFilter}
+          setLocalizaFiltro={setSearchFilter}
+        />
+
+        <Home
+          Listadeproduto={productList}
+          valorTotal={amount}
+          carrinho={cart}
+          setCarrinho={setCart}
+          setValorTotal={setAmount}
+        />
+        <Cart
+          Listadeproduto={productList}
+          valorTotal={amount}
+          carrinho={cart}
+          setCarrinho={setCart}
+          setValorTotal={setAmount}
+        />
       </AppBox>
     </>
   );

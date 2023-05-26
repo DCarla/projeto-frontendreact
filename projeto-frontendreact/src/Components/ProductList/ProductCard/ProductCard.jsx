@@ -1,17 +1,13 @@
-import { productList } from "../../../assents/productList";
-import { CardCaixa, CardTextCaixa } from "./ProductCardStyle";
+import { CardCaixa } from "./ProductCardStyle";
 
-export function ProductCard({ Listadeproduto }) {
+export function ProductCard() {
   return (
     <>
       <CardCaixa>
-        <img src={Listadeproduto.imageUrl} />
-        <CardTextCaixa>
-          <p>{Listadeproduto.name}</p>
-          <p>{Listadeproduto.value}</p>
-
-          <button>Adicionar item</button>
-        </CardTextCaixa>
+        <p>Product Card</p>
+        <p>Nome do produto</p>
+        <p>Valor do produto</p>
+        <button>Adicionar item</button>
       </CardCaixa>
     </>
   );

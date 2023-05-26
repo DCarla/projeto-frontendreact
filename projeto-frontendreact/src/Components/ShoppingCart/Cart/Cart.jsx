@@ -1,7 +1,7 @@
 import { Items } from "../Items/Items";
 import { CartCaixa } from "./cartStyle";
 
-export function Cart() {
+export function Cart({ valorTotal, carrinho, setCarrinho, setValorTotal }) {
   return (
     <>
       <CartCaixa>

@@ -2,13 +2,18 @@ import { useState } from "react";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { HomeCaixa0, HomeCaixa1, HomeCaixa2 } from "./homeStyled";
 
-export function Home({ Listadeproduto }) {
+export function Home({
+  Listadeproduto,
+  valorTotal,
+  carrinho,
+  setCarrinho,
+  setValorTotal,
+}) {
   const [ordination, setOrdination] = useState("");
 
   function hSelect(event) {
     setOrdination(event.target.value);
   }
-  console.log(ordination);
 
   return (
     <>
