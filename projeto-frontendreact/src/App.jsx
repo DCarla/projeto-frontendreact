@@ -7,10 +7,10 @@ import { productList } from "./assents/productList";
 import { useState } from "react";
 
 function App() {
-  const [cart, setCart] = useState("");
-  const [amount, setAmount] = useState("");
-  const [minfilter, setMinFilter] = useState("0");
-  const [maxfilter, setMaxFilter] = useState("0");
+  const [cart, setCart] = useState([]);
+  const [amount, setAmount] = useState(0);
+  const [minfilter, setMinFilter] = useState(0);
+  const [maxfilter, setMaxFilter] = useState(0);
   const [searchfilter, setSearchFilter] = useState("");
   return (
     <>
