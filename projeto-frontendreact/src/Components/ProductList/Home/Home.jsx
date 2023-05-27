@@ -8,8 +8,17 @@ export function Home({
   carrinho,
   setCarrinho,
   setValorTotal,
+  minfilter,
+  maxfilter,
+  localizaFiltro,
 }) {
   const [ordination, setOrdination] = useState("");
+
+  const listaDeProdutoFiltrada = Listadeproduto.filter(
+    (item) => item.value >= minfilter && (item.value <= maxfilter || !maxfilter)
+  ).filter((item) => item.name.includes(localizaFiltro));
+
+  console.log(localizaFiltro);
 
   function hSelect(event) {
     setOrdination(event.target.value);
@@ -43,7 +52,7 @@ export function Home({
     <>
       <HomeCaixa0>
         <HomeCaixa1>
-          <span>Quantidade de produtos:{Listadeproduto.length}</span>
+          <span>Quantidade de produtos:{listaDeProdutoFiltrada.length}</span>
           <span>
             Ordenação:
             <select value={ordination} onChange={hSelect}>
@@ -55,7 +64,7 @@ export function Home({
         </HomeCaixa1>
 
         <HomeCaixa2>
-          {Listadeproduto.map((produto) => {
+          {listaDeProdutoFiltrada.map((produto) => {
             return (
               <ProductCard
                 Listadeproduto={produto}

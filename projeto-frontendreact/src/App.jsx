@@ -10,7 +10,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState(0);
   const [minfilter, setMinFilter] = useState(0);
-  const [maxfilter, setMaxFilter] = useState(0);
+  const [maxfilter, setMaxFilter] = useState(null);
   const [searchfilter, setSearchFilter] = useState("");
   return (
     <>
@@ -29,6 +29,9 @@ function App() {
           Listadeproduto={productList}
           valorTotal={amount}
           carrinho={cart}
+          minfilter={minfilter}
+          maxfilter={maxfilter}
+          localizaFiltro={searchfilter}
           setCarrinho={setCart}
           setValorTotal={setAmount}
         />
