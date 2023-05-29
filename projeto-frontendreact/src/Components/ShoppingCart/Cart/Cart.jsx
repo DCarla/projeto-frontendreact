@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Items } from "../Items/Items";
 import { CartCaixa } from "./cartStyle";
 
@@ -17,6 +18,9 @@ export function Cart({ valorTotal, carrinho, setCarrinho, setValorTotal }) {
       }
     });
   }
+  useEffect(() => {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  }, [carrinho]);
   return (
     <>
       <CartCaixa>

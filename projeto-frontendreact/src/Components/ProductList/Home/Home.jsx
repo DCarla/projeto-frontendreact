@@ -16,7 +16,15 @@ export function Home({
 
   const listaDeProdutoFiltrada = Listadeproduto.filter(
     (item) => item.value >= minfilter && (item.value <= maxfilter || !maxfilter)
-  ).filter((item) => item.name.includes(localizaFiltro));
+  )
+    .filter((item) => item.name.includes(localizaFiltro))
+    .sort((a, b) => {
+      if (ordination == "asc") {
+        return a.value - b.value;
+      } else {
+        return b.value - a.value;
+      }
+    });
 
   console.log(localizaFiltro);
 
@@ -47,7 +55,7 @@ export function Home({
       setCarrinho(novoCarrinho);
     }
   }
-  console.log("valor total", valorTotal);
+  console.log("valor total", ordination);
   return (
     <>
       <HomeCaixa0>
@@ -57,8 +65,8 @@ export function Home({
             Ordenação:
             <select value={ordination} onChange={hSelect}>
               <option> </option>
-              <option>Crecente </option>
-              <option>Decrecente</option>
+              <option value="asc">Crecente </option>
+              <option value="des">Decrecente</option>
             </select>
           </span>
         </HomeCaixa1>
