@@ -4,7 +4,7 @@ import { Home } from "./Components/ProductList/Home/Home";
 import { Cart } from "./Components/ShoppingCart/Cart/Cart";
 import GlobalStyle from "./GlobalStyle";
 import { productList } from "./assents/productList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -12,6 +12,13 @@ function App() {
   const [minfilter, setMinFilter] = useState(0);
   const [maxfilter, setMaxFilter] = useState(null);
   const [searchfilter, setSearchFilter] = useState("");
+  useEffect(() => {
+    const carrinho = localStorage.getItem("carrinho");
+    console.log("carrinho", carrinho);
+    if (carrinho) {
+      setCart(JSON.parse(carrinho));
+    }
+  }, []);
   return (
     <>
       <GlobalStyle />
